@@ -1,3 +1,5 @@
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -59,6 +61,10 @@ class PageUpdate(StaffRequiredMixin, UpdateView):
         return reverse_lazy('pages:update', args=[self.object.id]) + '?ok=True'
 
 
-class PageDelete(StaffRequiredMixin, DeleteView):
+# Usando el decorador propio de django para tener la logica del condicional si ya esta autenticado y es del staff
+# para no heredar del mixin
+# @method_decorator(tipo_Decarador, name='metodo_a_aplicar')
+@method_decorator(staff_member_required, name='dispatch')
+class PageDelete(DeleteView):
     model = Page
     success_url = reverse_lazy('pages:pages')

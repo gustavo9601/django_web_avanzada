@@ -21,4 +21,9 @@ urlpatterns = [
     path('', include('core.urls')),
     path('pages', include(pages_patterns)),
     path('admin/', admin.site.urls),
+    # Paths de auth manual
+    # django.contrib.auth.urls // django proveera diferentes urls y views automaticamente, solo es necesario crear
+    # los archivos .html dentro de la app
+    path('accounts/', include('django.contrib.auth.urls'))
+
 ]
