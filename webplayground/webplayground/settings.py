@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Auth redirect when success login
-LOGIN_REDIRECT_URL = 'pages:pages'
+# LOGIN_REDIRECT_URL = 'pages:pages'
 # Logout redirection when out app
 LOGOUT_REDIRECT_URL = 'home'
 
@@ -140,3 +140,8 @@ if DEBUG:
 else:
     # Configuracion en prod
     pass
+
+
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
