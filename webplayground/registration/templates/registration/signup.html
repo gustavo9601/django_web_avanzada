@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <script>window.location.href = '/accounts/profile/'; </script>
+    {% endif %}
+    <style>.errorlist {
+        color: red;
+    }</style>
+    <main role="main">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-md-9 mx-auto mb-5">
+                    {% if 'register' in request.GET %}
+                        <p style="color:green;">Usuario registrado correctamente, ya puedes identificarte.</p>
+                    {% endif %}
+                    <form action="" method="post">{% csrf_token %}
+                        <h3 class="mb-4">Registro</h3>
+                        {{ form.as_p }}
+                        <p><input type="submit" class="btn btn-primary btn-block" value="Cofirmar"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
