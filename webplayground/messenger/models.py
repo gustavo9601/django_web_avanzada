@@ -40,9 +40,13 @@ class Thread(models.Model):
     # Relaciones
     users = models.ManyToManyField(User, related_name='threads')
     messages = models.ManyToManyField(Message, related_name='threads')
+    updated_at = models.DateTimeField(auto_now=True)
 
     # Especificando los nuevos metodos que se extenderan del modelo
     objects = ThreadManager()
+
+    class Meta:
+        ordering = ['-updated_at']
 
 
 def messages_changed(sender, **kwargs):
@@ -62,6 +66,9 @@ def messages_changed(sender, **kwargs):
                 print(f"**Ups, {msg.user} no forma parte del thread")
     # Busca los mensajes de false_pk_set que no estan en pk_set y los borra de pk_set
     pk_set.difference_update(false_pk_set)
+
+    # Forzar la actualizando haciendo un save, para que rellene el update_at
+    instance.save()
 
 
 # Enlazando la señal de otra forma
