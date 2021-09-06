@@ -34,7 +34,7 @@ Signals => Las señales son eventos a ejecutar cuando algo ocurra en un modelo
 """
 
 
-@receiver(post_save, sender=User)
+# @receiver(post_save, sender=User)
 def ensure_profile_exists(sender, instance, **kwargs):
     # Se valida si viene created en kwargs, solo se llama cuando se crea por lo tanto las demas veces
     # que se modifiquen el modelo no se enviara y no se actualizara

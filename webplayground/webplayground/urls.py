@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from pages.urls import pages_patterns
 from profiles.urls import profiles_patterns
+from messenger.urls import messenger_patterns
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -31,10 +32,13 @@ urlpatterns = [
 
     # Paths de profiles
     path('profiles/', include(profiles_patterns)),
+    # Paths de messenger
+    path('messenger/', include(messenger_patterns)),
 
 ]
 
 if settings.DEBUG:
     # Cargando la configuracion en debug para los archivos
     from django.conf.urls.static import static
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
