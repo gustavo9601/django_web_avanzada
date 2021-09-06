@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from pages.urls import pages_patterns
+from profiles.urls import profiles_patterns
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -26,7 +27,10 @@ urlpatterns = [
     # django.contrib.auth.urls // django proveera diferentes urls y views automaticamente, solo es necesario crear
     # los archivos .html dentro de la app
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('registration.urls'))
+    path('accounts/', include('registration.urls')),
+
+    # Paths de profiles
+    path('profiles/', include(profiles_patterns)),
 
 ]
 
