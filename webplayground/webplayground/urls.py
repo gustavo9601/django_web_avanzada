@@ -42,3 +42,9 @@ if settings.DEBUG:
     from django.conf.urls.static import static
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# Custom titles for admin dashboard
+admin.site.site_header = 'Dashboard Web PlayGround'
+admin.site.index_title = 'Dashboard Web PlayGround'
+admin.site.site_title = 'Dashboard Web PlayGround'
